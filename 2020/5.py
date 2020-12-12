@@ -22,9 +22,9 @@ def main(inputf):
             seats.append(line.strip())
 
     ans_1 = pt_1(deepcopy(seats))
-    print(ans_1)
+    print(max(ans_1))
 
-    ans_2 = pt_2()
+    ans_2 = pt_2(ans_1)
     print(ans_2)
 
 
@@ -51,17 +51,13 @@ def pt_1(seats):
         id = row*8 + col
         ids.append(id)
 
-    return max(ids)
+    return ids
 
 
-
-
-
-
-
-
-def pt_2():
-    pass
+def pt_2(ids):
+    full_ids = set(range(min(ids), max(ids)))
+    ids = set(ids)
+    return full_ids - ids
 
 
 
