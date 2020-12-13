@@ -22,7 +22,7 @@ def main(inputf):
     ans_1 = pt_1(deepcopy(groups))
     print(ans_1)
 
-    ans_2 = pt_2()
+    ans_2 = pt_2(deepcopy(groups))
     print(ans_2)
 
 
@@ -30,16 +30,22 @@ def pt_1(groups):
     count = 0
     for g in groups:
         yes_set = set()
-        for yes in g:
-            yes_set.update([i for i in yes])
+        for response in g:
+            yes_set.update([i for i in response])
         count += len(yes_set)
 
     return count
 
 
-def pt_2():
-    pass
+def pt_2(groups):
+    count = 0
+    for g in groups:
+        yes_set = set(g[0])
+        for response in g[1:]:
+            yes_set = yes_set & set([i for i in response])
+        count += len(yes_set)
 
+    return count
 
 
 
