@@ -15,7 +15,7 @@ def main(inputf):
     ans_1 = pt_1(deepcopy(nums))
     print(ans_1)
 
-    ans_2 = pt_2()
+    ans_2 = pt_2(deepcopy(nums), ans_1)
     print(ans_2)
 
 
@@ -39,9 +39,16 @@ def in_preamble(preamble, n):
     return False
 
 
-def pt_2():
-    pass
-
+def pt_2(nums, target):
+    for i, n in enumerate(nums):
+        sum = n
+        j = i + 1
+        while sum < target:
+            sum += nums[j]
+            if sum == target:
+                sum_list = nums[i:j+1]
+                return min(sum_list) + max(sum_list)
+            j += 1
 
 
 
